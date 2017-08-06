@@ -1,0 +1,21 @@
+{%for q in posts_thread%}
+	{%if forloop.first%}
+		<div class="op_post">
+			{%if q.img%}
+				<img src="{{q.img}}">
+			{%else%}
+				<div></div>
+			{%endif%}
+			<div class ="datetime">{{q.published_date}}</div>
+			<div class="post_id">{{q.ID}}</div>
+			<div>Ответ</div>
+			<div class="post_text">{{q.text}}</div>
+		<div/>
+	{%else%}
+		<div class="post">
+			<div class="datetime">----------{{q.published_date}}</div>
+			<div class="post_id">----------{{q.ID}}</div>
+			<div class="post_text">----------{{q.text}}</div>
+		</div>
+	{%endif%}
+{%endfor%}

@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+{%if posts%}
+	{%for sas in posts%}
+		<hr>
+		{%for q in sas%}
+			{%if forloop.first%}
+				<div class="op_post">
+				<div ><a href="{% url 'open_thread' q.ID %}">Ответ</a></div>
+				{%if q.img%}
+					<img src="{{q.img}}">
+				{%else%}
+					<div></div>
+				{%endif%}
+				<div class ="datetime">{{q.published_date}}</div>
+				<div class="post_id">{{q.ID}}</div>
+				<div class="post_text">{{q.text}}</div>
+				</div>
+			{%else%}
+				<div class="post">
+					<div class="datetime">----------{{q.published_date}}</div>
+					<div class="post_id">----------{{q.ID}}</div>
+					<div class="post_text">----------{{q.text}}</div>
+				</div>
+			{%endif%}
+		{%endfor%}
+	{%endfor%}
+{%endif%}
